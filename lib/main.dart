@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'story_brain.dart';
-import 'story_brain.dart';
-import 'story_brain.dart';
+import 'components/story_brain.dart';
 
 
 void main() => runApp(Destini());
@@ -50,52 +48,36 @@ class _StoryPageState extends State<StoryPage> {
                   ),
                 ),
               ),
-              Expanded(
-                flex: 2,
-                child: FlatButton(
-                  onPressed: () {
-                    //Choice 1 made by user.
-                    setState(() {
-                      storyBrain.nextStory(1);
-                    });
-                  },
-                  color: Colors.red,
-                  child: Text(
-                    storyBrain.getChoice1(),
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    ),
-                  ),
-                ),
-              ),
+              choiceButton(1, storyBrain.getChoice1()),
               SizedBox(
                 height: 20.0,
               ),
-              Expanded(
-                flex: 2,
-                child: Visibility(
-                  visible: storyBrain.buttonShouldBeVisible(),
-                  child: FlatButton(
-                    onPressed: () {
-                      //Choice 2 made by user.
-                      setState(() {
-                        storyBrain.nextStory(2);
-                      });
-                    },
-                    color: Colors.blue,
-                    child: Text(
-                      storyBrain.getChoice2(),
-                      style: TextStyle(
-                        fontSize: 20.0,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              choiceButton(2, storyBrain.getChoice2()),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Expanded choiceButton(int cn,String ch) {
+    return Expanded(
+              flex: 2,
+              child: FlatButton(
+                onPressed: () {
+                  //Choice 1 made by user.
+                  setState(() {
+                    storyBrain.nextStory(cn);
+                  });
+                },
+                color: Colors.red,
+                child: Text(
+                 ch,
+                  style: TextStyle(
+                    fontSize: 20.0,
+                  ),
+                ),
+              ),
+            );
   }
 }

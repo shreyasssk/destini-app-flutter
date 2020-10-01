@@ -1,5 +1,5 @@
-import 'story.dart';
-import 'story.dart';
+import '../models/story.dart';
+import '../models/story.dart';
 
 class StoryBrain {
   List<Story> _storyData = [
